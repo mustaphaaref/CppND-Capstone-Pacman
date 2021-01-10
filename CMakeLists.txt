@@ -10,6 +10,19 @@ project(Pacman)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS} src)
 
-add_executable(Pacman src/main.cpp)
+set(PACMAN_HEADERS
+src/Controller.h
+src/Game.h
+src/Renderer.h
+)
+
+set(PACMAN_SOURCES
+src/Controller.cpp
+src/Game.cpp
+src/main.cpp
+src/Renderer.cpp
+)
+
+add_executable(Pacman ${PACMAN_SOURCES} ${PACMAN_HEADERS})
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(Pacman ${SDL2_LIBRARIES})
